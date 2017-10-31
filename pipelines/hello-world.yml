@@ -5,6 +5,7 @@ resources:
   source:
     uri: https://github.com/lflux/concourse-onboarding.git
     branch: master
+
 jobs:
 - name: hello-world
   plan:
@@ -13,4 +14,4 @@ jobs:
   - task: say-hello
     file: ci/tasks/say-hello.yml
     params:
-      SAY: hello
+      SAY: hello again
