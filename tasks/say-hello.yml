@@ -1,0 +1,17 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: ubuntu
+    tag: latest
+
+inputs:
+  - name: ci
+
+params:
+  SAY:
+
+run:
+  path: ci/tasks/say-hello
