@@ -5,7 +5,8 @@ mkdir -p $GOPATH/github.com/lflux/concourse-coverage
 cp -a code/* $GOPATH/github.com/lflux/concourse-coverage
 
 pushd $GOPATH/github.com/lflux/concourse-coverage
-    go test -v -covermode=atomic -coverprofile=cover.out
+    echo $GOPATH
+    go test -v -covermode=atomic -coverprofile=cover.out .
 popd
 
 exit 0
