@@ -1,9 +1,10 @@
 #!/bin/bash
 
 export GOPATH=$PWD/coverage/src
+
 mkdir -p $GOPATH/github.com/lflux/concourse-coverage
 cp -a code/* $GOPATH/github.com/lflux/concourse-coverage
 
-go test -v -covermode=atomic -coverprofile=coverage/cover.out .
+go test -v -covermode=atomic -coverprofile=coverage/cover.out github.com/lflux/concourse-coverage
 
 exit 0
