@@ -1,10 +1,6 @@
 #!/bin/bash
 
-export GOPATH=$PWD/coverage/
-
-mkdir -p $GOPATH/src/github.com/lflux/concourse-coverage
-cp -a code/* $GOPATH/src/github.com/lflux/concourse-coverage
-
-go test -v -covermode=atomic -coverprofile=coverage/cover.out github.com/lflux/concourse-coverage
-
+pushd code
+    go test -v -covermode=atomic -coverprofile=../coverage/cover.out .
+popd
 exit 0
