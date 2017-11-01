@@ -6,11 +6,17 @@ resources:
     uri: https://github.com/lflux/concourse-onboarding.git
     branch: master
 
+- name: say-hello-image
+  type: docker-image
+  source:
+    repository: lflux/testfoo
+
 jobs:
 - name: hello-world
   plan:
-  - get: ci
-    trigger: true
+  - aggregate:
+    - get: ci
+    - get: say-hello-image
   - task: say-hello
     file: ci/tasks/say-hello.yml
     params:
