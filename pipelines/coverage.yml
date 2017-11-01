@@ -1,16 +1,27 @@
 ---
+resource_types:
+- name: codeclimate
+  type: docker-image
+  source:
+    repository: lflux/codeclimate-resource
+
 resources:
 - name: ci
   type: git
   source:
-    uri: https://github.com/lflux/concourse-coverage.git
+    uri: https://github.com/lflux/concourse-onboarding.git
     branch: master
 
 - name: code
   type: git
   source:
-    uri: https://github.com/lflux/cf-onboarding.git
+    uri: https://github.com/lflux/concourse-coverage.git
     branch: master
+
+- name: upload-codeclimate
+  type: codeclimate
+  source:
+    api_token: ((codeclimate_api_token))
 
 jobs:
 - name: unit-tests
@@ -20,6 +31,10 @@ jobs:
     - get: ci
     - get: code
       trigger: true
-  - task: run-unit-tests
-    file: ci/task/run-unit-tests.yml
-  # - task: upload-code-coverage
+  - do:
+    - task: run-unit-tests
+      file: ci/tasks/run-unit-tests.yml
+    - put: upload-codeclimate
+      params:
+        source_path: coverage/src/github.com/lflux/concourse-coverage
+        coverage_file: cover.out
