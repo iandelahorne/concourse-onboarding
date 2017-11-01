@@ -1,6 +1,11 @@
 #!/bin/bash
 
-pushd code
-    go test -v -covermode=atomic -coverprofile=../coverage/cover.out .
+mkdir -p $GOPATH/src/github.com/lflux/concourse-coverage
+cp -a code/* $GOPATH/src/github.com/lflux/concourse-coverage
+COVERFILE=$PWD/coverage/cover.out
+
+pushd $GOPATH/src/github.com/lflux/concourse-coverage
+    go test -v -covermode=atomic -coverprofile=$COVERFILE
 popd
+
 exit 0
