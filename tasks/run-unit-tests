@@ -1,3 +1,7 @@
 #!/bin/bash
 
-exit 1
+pushd code/
+    go test -v -covermode=atomic -coverprofile=../coverage/cover.out
+popd
+
+exit 0
