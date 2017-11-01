@@ -3,7 +3,9 @@
 export GOPATH=$PWD/coverage
 
 mkdir -p $GOPATH/src/github.com/lflux/concourse-coverage
-cp -a code/* $GOPATH/src/github.com/lflux/concourse-coverage
+pushd code
+    cp -a . $GOPATH/src/github.com/lflux/concourse-coverage
+popd
 COVERFILE=$PWD/coverage/cover.out
 
 pushd $GOPATH/src/github.com/lflux/concourse-coverage
