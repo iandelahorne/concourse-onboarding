@@ -1,15 +1,9 @@
 #!/bin/bash
 
-export GOPATH=$PWD/coverage
-
-mkdir -p $GOPATH/src/github.com/lflux/concourse-coverage
-pushd code
-    cp -a . $GOPATH/src/github.com/lflux/concourse-coverage
-popd
-COVERFILE=$PWD/coverage/cover.out
+# export GOPATH=$PWD/coverage
 
 pushd $GOPATH/src/github.com/lflux/concourse-coverage
-    go test -v -coverprofile=$COVERFILE
+    go test -v -coverprofile=cover.out
 popd
 
 exit 0

@@ -9,6 +9,7 @@ image_resource:
 
 inputs:
   - name: code
+    path: go/src/github.com/lflux/concourse-coverage
   - name: ci
 
 outputs:
