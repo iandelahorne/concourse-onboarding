@@ -36,5 +36,5 @@ jobs:
       file: ci/tasks/run-unit-tests.yml
     - put: upload-codeclimate
       params:
-        source_path: code
+        source_path: coverage
         coverage_file: cover.out
