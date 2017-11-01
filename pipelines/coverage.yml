@@ -1,0 +1,25 @@
+---
+resources:
+- name: ci
+  type: git
+  source:
+    uri: https://github.com/lflux/concourse-coverage.git
+    branch: master
+
+- name: code
+  type: git
+  source:
+    uri: https://github.com/lflux/cf-onboarding.git
+    branch: master
+
+jobs:
+- name: unit-tests
+  serial: true
+  plan:
+  - aggregate:
+    - get: ci
+    - get: code
+      trigger: true
+  - task: run-unit-tests
+    file: ci/task/run-unit-tests.yml
+  # - task: upload-code-coverage
