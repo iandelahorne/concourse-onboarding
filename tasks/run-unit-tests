@@ -6,7 +6,8 @@ COVERPATH=$PWD/coverage
 
 pushd $GOPATH/src/github.com/lflux/concourse-coverage
     go test -v -coverprofile=cover.out
-    cp -a . $COVERPATH
+    mkdir -p $COVERPATH/src/github.com/lflux/concourse-coverage
+    cp -a . $COVERPATH/src/github.com/lflux/concourse-coverage
 popd
 
 exit 0
