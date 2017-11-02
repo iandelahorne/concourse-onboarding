@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export GOPATH=$PWD/coverage
+export GOPATH=$PWD/go
 
 pushd $GOPATH/src/github.com/lflux/concourse-coverage
     go test -v -coverprofile=cover.out
