@@ -2,10 +2,11 @@
 
 export GOPATH=$PWD/go
 
+COVERPATH=$PWD/coverage
+
 pushd $GOPATH/src/github.com/lflux/concourse-coverage
     go test -v -coverprofile=cover.out
+    cp -a . $COVERPATH
 popd
-
-mkdir -a $GOPATH/src/github.com/lflux/concourse-coverage/* coverage/
 
 exit 0

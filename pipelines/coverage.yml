@@ -37,4 +37,4 @@ jobs:
     - put: upload-codeclimate
       params:
         coverage_file: cover.out
-        repository_path: coverage/src/github.com/lflux/concourse-coverage  
+        repository_path: coverage 
